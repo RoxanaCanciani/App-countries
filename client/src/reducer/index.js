@@ -40,27 +40,32 @@ function rootReducer(state=initialState, action){
                 countries: filterContinent,
             }
 
-            case 'GET_ACTIVITY':
-             
-             return{
-                    ...state,
-                    activity: action.payload,
-                    allActivity: action.payload,
-             }
+        
 
             
 
-             case 'FILTER_BY_ACTIVITY':
-                    const allActivity= state.allActivity;
-                    
-                    const filterActivity= allActivity?.filter(country => country.name === action.payload);
-                    
-                    
-                    console.log('esto es el estado activity',filterActivity)
-            return {
-                ...state,
-                activity:filterActivity,
-        }
+        
+
+        case "FILTER_BY_ACTIVITY":{
+            
+            const allActivity= state.allActivity
+            
+            
+
+          const activity= allActivity.filter(a=>a.name===action.payload)[0].countries.map(el => el)
+          return {
+                   ...state,
+                   countries: activity
+                  }
+                 }
+        
+          case "GET_ACTIVITY":{
+              return{
+                  ...state,
+                  allActivity: action.payload,
+                  activity: action.payload
+              }
+          }
 
             case 'ORDER_BY_NAME' :
             let order = action.payload === 'asc(a-z)' ? 
@@ -111,6 +116,8 @@ function rootReducer(state=initialState, action){
                 }
                 return 0;
             })
+
+            
             return{
                 ...state ,
                 countries : orderScore
@@ -137,14 +144,6 @@ function rootReducer(state=initialState, action){
             return state;
     }
 }   
-// case 'FILTER_BY_TYPES':
-// 			const allPokemons = state.allPokemons;
-// 			const typesFilter = action.payload ==='All'? allPokemons 
-// 			: allPokemons?.filter(pok => pok.types.includes(action.payload)			
-// 			);
-// 			return {
-// 				...state,
-// 				pokemons: typesFilter
-// 			}
+		
 
 export default rootReducer;

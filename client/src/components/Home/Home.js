@@ -2,13 +2,13 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux'; 
 import { useEffect, useState } from 'react';
-import {getCountries, filterByContinent, orderByName, orderByScore} from  '../../actions';
+import {getCountries, filterByContinent, orderByName, orderByScore,getActivity, filterByActivity} from  '../../actions';
 import {Link} from 'react-router-dom';
 
 import Card from '../Card/Card';
 import Paged from '../Paged/Paged';
 import SearchBar from '../SearchBar/SearchBar';
-import FilterActivity from '../FilterActivity/FilterActivity';
+
 import styles from './Home.module.css';
 
 
@@ -21,15 +21,16 @@ import styles from './Home.module.css';
 
     //me creo una constante para traerme todo lo que esta en el estado de countries (mapStateToProps)
     const allCountries = useSelector(state => state.countries);
-    
+    const allActivities = useSelector(state => state.allActivity);
 //console.log('lo que me trae el estado countries',allCountries)
     //traerme del estado,  countries cuando el componente se monta
     //despacho la accion invocada (mapDispatchToProps)
-    useEffect(()=>{
-        dispatch(getCountries());
-    },[dispatch]);
+    
+
+    
    //el [] es para que se ejecute solo una vez 
    //el [dispatch] es para que se ejecute cada vez que se haga un dispatch
+   
    
      const[order,setOrder] =useState('') 
      const[orderScore,setOrderScore] =useState('')
@@ -44,17 +45,21 @@ import styles from './Home.module.css';
      const paged = (pageNumber) => {
             setCurrentPage(pageNumber);
         }
+        useEffect(()=>{
+            dispatch(getCountries());
+            dispatch(getActivity());
+        },[dispatch]);
 
    function handleClick(e){
        e.preventDefault();
        dispatch(getCountries());
-       //que me vuelva a traer todo lo que esta en el estado de countries
+       
    }
 
    function handleFilterContinent(e){
          e.preventDefault();
          dispatch(filterByContinent(e.target.value));
-         //que me vuelva a traer todo lo que esta en el estado de countries
+         
 
    }
    
@@ -73,6 +78,13 @@ function handleSortScore(e){
     setCurrentPage(1);
     //me modifique el estado local y se renderice
     setOrderScore(`Ordenado ${e.target.value}`)
+}
+
+function handleFilterActivity(e){
+    e.preventDefault();
+    dispatch(filterByActivity(e.target.value));
+    
+
 }
 
 
@@ -116,8 +128,20 @@ function handleSortScore(e){
     </select>
 </div>
         <div>
+        <label>Selecciona una Actividad: </label>
+
+                 
+                    
+                    <select  onChange={e=>handleFilterActivity(e)}>
+                <option value=''></option>
+                {allActivities?.length &&
+                    allActivities.map(a=>{return(
+                        <option key={a.id} value={a.name}>{a.name}</option>
+                    )})
+
+                    } 
+                </select>
         
-        <FilterActivity/>
         </div>
 
 <div className={styles.paginado} >

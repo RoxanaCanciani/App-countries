@@ -1,0 +1,25 @@
+.bkg{
+    background-image: url('../../imagenes/667235.jpg');
+    background-size: cover;
+      background-repeat: repeat;
+      position: absolute;
+      top: 1px;
+      bottom: 1px;
+      right: 3px;
+      left: 3px;
+      
+  
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 100px;
+  }
+  
+  .boton{
+    align-items: flex-start;
+  }

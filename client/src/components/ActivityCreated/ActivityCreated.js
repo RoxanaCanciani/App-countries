@@ -5,13 +5,13 @@
 import React from 'react'
 import { useEffect, useState }  from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
 import {getCountries, postActivity} from '../../actions/index.js'
 import { Link } from 'react-router-dom'
+import styles from './ActivityCreated.module.css'
 
 export default function ActivityCreated(){
     const dispatch = useDispatch();
-    const allCountries = useSelector(state => state.countries);
+    const country = useSelector(state => state.countries);
     //const[inputCountries, setInputCountries] = useState([])
 
     const[input, setInput] = useState({
@@ -44,7 +44,7 @@ export default function ActivityCreated(){
             function handleDelete(e){
                 setInput({
                     ...input,
-                    allCountries:input.country.filter(el => el.name !== e)
+                    country:input.country.filter(el => el !== e)
                 })
             }
 
@@ -66,8 +66,11 @@ export default function ActivityCreated(){
 
 
 return(
-    <div>
-<Link to='/home'><button>GO BACK</button></Link>
+    
+    
+    <div className={styles.bkg}>
+<Link to='/home'><button>Home</button></Link>
+        <div className={styles.container} >
 
 <h1>Create your Activity!!!!</h1>
 
@@ -104,23 +107,27 @@ return(
                 
 
                 <label>Country:</label>
-                <select  onChange={handleSelect} >
-                    {allCountries?.map(el => {
-                     return    <option value={el.name} >{el.name}</option>
+                <select  onChange={handleSelect} required >
+                <option value={''}></option>
+                    {country?.map(el => {
+                     return <option value={el.name} >{el.name}</option>
                     })}
                 </select>
-                <button type='submit'>Create Activity</button>
+                <div className={styles.boton} >
+                    <button type='submit'>Create Activity</button>
+                </div>
+                 
                 
 
 </form>
 {input.country?.map(el=>
                 <div >
-                    <p >{el}<button  onClick={()=>{handleDelete(el)}}>X</button></p>
+                     <p >{el}<button  onClick={()=>{handleDelete(el)}}>X</button></p>
                 </div>
                 )}
     </div>
-
-
+    </div>
+    
 )
 
 }
