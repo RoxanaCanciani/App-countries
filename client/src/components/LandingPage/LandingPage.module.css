@@ -1,0 +1,40 @@
+.landing{
+    background-image: url('../../imagenes/landing.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    
+}
+.wlc{
+    color: rgb(245, 237, 237);
+    font-style: italic;
+    font-size: 2em;
+    text-align: left;
+    margin-top: 15%;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    font-size: 120px;
+    font-family: dosis;  
+}
+
+.btn {
+    cursor: pointer;
+    background: #f2f5f3;
+   
+  
+    
+    border-radius: 15px;
+    font-style: italic;
+
+    color: #0c0c0c;
+    font-size: 30px;
+    padding: 9px 23px 9px 23px;
+    text-decoration: none;
+    text-align: right;
+    
+    
+  }

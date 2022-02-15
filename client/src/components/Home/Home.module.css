@@ -1,0 +1,52 @@
+.paginado{
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    
+    width: 300;
+  font-size: 20px;
+    
+  }
+
+  .home{
+    background-image: url('../../imagenes/667235.jpg');
+    background-color: rgb(245, 239, 156);
+    border-radius: 5px;
+    margin-top: 1px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 1px;
+   }
+
+   .cards{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+   
+    
+
+}
+
+.select{
+  background-color: rgb(199, 200, 240);
+  cursor: pointer;
+  display:inline-block;
+  justify-content: center;
+  text-align: center;
+  padding: 2px;
+  border-radius: 0.5px;
+  border-style: groove;
+}
+
+.create{
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 5px;
+  font-family: italic;
+  color: #000000;
+  font-size: 20px;
+  background-color: rgb(199, 200, 240);
+  padding:  6px 16px 6px 16px ;
+  text-decoration: none;
+  
+}

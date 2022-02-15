@@ -1,0 +1,36 @@
+.all{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 40px;
+    
+}
+
+.card{
+    background-color: rgb(199, 200, 240);
+    font-family: 'Nunito', sans-serif;
+   font-size: 0.8rem;
+   width: 350px;
+    height: 260px;
+    box-shadow: 5px 5px 5px #1a1818;
+    
+    
+  
+    
+    
+}
+.image{
+    width: 170px;
+    height: 100px;
+    
+    border-radius: 2%;
+   
+}
+.section{
+    grid-area: text;
+}
+.card:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: all 0.5s;
+}

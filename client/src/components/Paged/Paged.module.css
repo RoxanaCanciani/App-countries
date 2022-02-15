@@ -1,0 +1,28 @@
+.paged{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    color: rgb(25, 69, 80);
+    
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 3px;
+    margin-bottom: 2rem;
+    background:rgb(14, 139, 241);
+    cursor: pointer;
+   
+}
+
+.container:hover {
+    background: #a4d4dd;
+    text-decoration: none;
+    cursor: pointer;
+  }
